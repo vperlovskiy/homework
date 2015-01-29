@@ -28,10 +28,10 @@ public class Solution {
         //list of addresses
         Map<String, String> location = new HashMap<String, String>();
         while (true) {
-            String family = reader.readLine();
-            if (family.isEmpty()) break;
+            String city = reader.readLine();
+            if (city.isEmpty()) break;
             else {
-                String city = reader.readLine();
+                String family = reader.readLine();
                 location.put(city, family);
             }
         }
