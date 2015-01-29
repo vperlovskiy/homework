@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 
@@ -20,25 +21,33 @@ JANUARY 2 2020 = false
 
 public class Solution {
 
-    public static void main(String[] args) throws IOException
-    {
         //add your code here - напиши код тут
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String line = reader.readLine();
-        line = line.substring(0,1).toUpperCase() + line.substring(1).toLowerCase();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM", Locale.ENGLISH);
-        Date month = null;
-
-        try
+        public static void main(String[] args) throws Exception
         {
-            month = simpleDateFormat.parse(line);
-        }
-        catch (ParseException e)
-        {
-            e.printStackTrace();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            String[] array = new String[20];
+            for (int i = 0; i < array.length; i++)
+            {
+                array[i] = reader.readLine();
+            }
+
+            sort(array);
+
+            for (String x : array)
+            {
+                System.out.println(x);
+            }
         }
 
-        System.out.println("«" + line + " is " + (month.getMonth() + 1) + " month».");
+    public static void sort(String[] array)
+    {
+        //Напишите тут ваш код
+        Arrays.sort(array);
     }
 
+    //Метод для сравнения строк: 'а' больше чем 'b'
+    public static boolean isGreaterThen(String a, String b)
+    {
+        return a.compareTo(b) > 0;
+    }
 }
