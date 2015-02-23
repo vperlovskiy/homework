@@ -43,6 +43,4 @@ public class l08l10h1 {
                 if (entry.getKey().equals(town)) System.out.println(entry.getValue());
             }
         }
-
-    }
 }
