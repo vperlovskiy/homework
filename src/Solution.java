@@ -3,42 +3,44 @@ import jdk.nashorn.internal.runtime.regexp.RegExp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
+/* Нужно добавить в программу новую функциональность
+Задача: Программа определяет, какая семья (фамилию) живёт в доме с указанным номером.
+Новая задача: Программа должна работать не с номерами домов, а с городами:
+Пример ввода:
+Москва
+Ивановы
+Киев
+Петровы
+Лондон
+Абрамовичи
 
-/* Работа с датой
-1. Реализовать метод isDateOdd(String date) так, чтобы он возвращал true,
- если количество дней с начала года - нечетное число,
- иначе false
-2. String date передается в формате MAY 1 2013
-Пример:
-JANUARY 1 2000 = true
-JANUARY 2 2020 = false
+Лондон
+
+Пример вывода:
+Абрамовичи
 */
 
 public class Solution {
-
-    public static void main(String[] args) throws IOException
-    {
-        //add your code here - напиши код тут
+    public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String line = reader.readLine();
-        line = line.substring(0,1).toUpperCase() + line.substring(1).toLowerCase();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM", Locale.ENGLISH);
-        Date month = null;
 
-        try
-        {
-            month = simpleDateFormat.parse(line);
+        //list of addresses
+        Map<String, String> location = new HashMap<String, String>();
+        while (true) {
+            String city = reader.readLine();
+            if (city.isEmpty()) break;
+            else {
+                String family = reader.readLine();
+                location.put(city, family);
+            }
         }
-        catch (ParseException e)
-        {
-            e.printStackTrace();
-        }
+            //read home number
+            String town = reader.readLine();
 
-        System.out.println("«" + line + " is " + (month.getMonth() + 1) + " month».");
-    }
+            for (Map.Entry<String, String> entry : location.entrySet()){
+                if (entry.getKey().equals(town)) System.out.println(entry.getValue());
+                }
+        }
 
 }
